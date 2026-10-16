@@ -1,0 +1,17 @@
+{
+  "name": "scalezix-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Scalezix website dev build (prerendered TanStack Start build)",
+  "scripts": {
+    "start": "node server.js",
+    "content": "node tools/rebrand.js && node tools/version-assets.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "acorn": "8.14.0",
+    "acorn-walk": "8.3.4"
+  }
+}
