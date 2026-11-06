@@ -37,6 +37,10 @@ npm install        # once, installs the JS parser the tool uses
 npm run content
 ```
 
+`content-map.js` maps the original mirrored text to the first Scalezix copy. Later copy changes live in their own
+map, applied with `node tools/rebrand.js tools/<map>.js` (e.g. `tools/content-update-2026-11.js`, the November 2026
+enterprise copy; its extra sections and items were added by `tools/homepage-structure-2026-11.js`).
+
 It replaces the text in both places, reports anything it could not find, and then renames the changed JS
 chunks (`tools/version-assets.js`) so no browser keeps running an old cached copy. After running it, load
 each page and check the browser console for hydration errors.

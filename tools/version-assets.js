@@ -8,7 +8,8 @@ const crypto = require('crypto');
 const SITE = path.join(__dirname, '..', 'altrdtech.com');
 const ASSETS = path.join(SITE, 'assets');
 
-const chunks = fs.readdirSync(ASSETS).filter((f) => f.endsWith('.js'));
+// Only hashed chunks (name-xxxxxxxx.js); plain files like footer-reveal.js keep their name.
+const chunks = fs.readdirSync(ASSETS).filter((f) => /-[A-Za-z0-9_-]{8}\.js$/.test(f));
 const renames = new Map();
 for (const f of chunks) {
   const content = fs.readFileSync(path.join(ASSETS, f));

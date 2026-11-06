@@ -12,7 +12,9 @@ const walk = require('acorn-walk');
 const SITE = path.join(__dirname, '..', 'altrdtech.com');
 const ASSETS = path.join(SITE, 'assets');
 const dry = process.argv.includes('--dry');
-const map = require('./content-map');
+// Optional map file argument (default: tools/content-map.js), e.g. node tools/rebrand.js tools/content-update-2026-11.js
+const mapArg = process.argv.slice(2).find((a) => !a.startsWith('--'));
+const map = require(mapArg ? path.resolve(mapArg) : './content-map');
 
 const escHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
 const escRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
